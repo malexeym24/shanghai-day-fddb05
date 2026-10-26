@@ -66,7 +66,7 @@ P = [
       photos=["xlb-1.jpg", "xlb-2.jpg", "xlb-3.jpg", "xlb-4.jpg"],
       sub="Пельмени с бульоном внутри, рядом с садом",
       what=["Сяолунбао - маленькие пельмени с бульоном внутри, их готовят на пару в бамбуковых корзинках. Считается, что они родом из Шанхая, шанхайский вариант называют Nanxiang.",
-            "Nanxiang Mantou Dian - известная пельменная на базаре у Yu Garden. По путеводителю 2026 года очередь к окну на вынос 45-60 мин, лучше прийти пораньше. Залы наверху без такой очереди, но дороже (верхний этаж около 200-500 ¥ на человека)."],
+            "Nanxiang Mantou Dian - известная пельменная на базаре у Yu Garden. По путеводителю 2026 года очередь к окну на вынос 45-60 мин, лучше прийти пораньше. Залы наверху дороже: на верхнем этаже около 200-500 ¥ на человека."],
       facts=[("Очередь", "45-60 мин к окну на вынос (путеводитель 2026)"), ("На месте", "40-60 мин")],
       src="путеводитель wanderinchina.com (2026); о сяолунбао - Wikipedia. Часы работы я не проверял",
       how=["3 мин пешком от Yu Garden."], near=["yu", "bund"]),
@@ -154,7 +154,7 @@ DAYS = [
       steps=[
         ("10:00", None, "Такси от отеля до северных ворот Yu Garden, 6 км, 15-20 мин. Показать: <b>豫园 北门 · 福佑路168号</b>.", [("📍 Yu Garden", gm("Yu Garden Shanghai"))]),
         ("10:20", "yu", "Сад, 1-1,5 ч. Билет 40 ¥ в кассе у ворот, паспорт с собой. После сада - чайный домик Huxinting и храм бога города рядом.", []),
-        ("12:00", "nanxiang", "Обед. Очередь к окну на вынос бывает 45-60 мин, наверху в зале дольше сидеть, но быстрее сесть.", []),
+        ("12:00", "nanxiang", "Обед. Очередь к окну на вынос по путеводителю 2026 года 45-60 мин, залы наверху дороже.", []),
         ("13:00", "bund", "10 мин пешком до южного конца Bund, по набережной на север 15 мин до Peace Hotel.", []),
         ("14:00", "waibaidu", "Ещё 8 мин на север до моста. Потом 15 мин пешком до метро <b>East Nanjing Road</b>.", []),
         ("14:40", None, "Метро <b>Line 2 (зелёная)</b>, поезд в сторону Pudong Airport / Guanglan Road, <b>1 остановка</b> под рекой до <b>Lujiazui</b>. Оплата: приложи Visa / Mastercard к турникету.", [("📍 East Nanjing Road", gm("East Nanjing Road Station Shanghai"))]),
@@ -292,7 +292,7 @@ var map=L.map('map',{scrollWheelZoom:false});window.map=map;
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'© OpenStreetMap',maxZoom:19}).addTo(map);
 var mk={};
 M.forEach(function(p){var ic=L.divIcon({className:'',html:'<div class="pin">'+p.n+'</div>',iconSize:[28,28],iconAnchor:[14,14]});
- var m=L.marker([p.lat,p.lng],{icon:ic}).bindTooltip(p.n+'. '+p.name,{direction:'top',offset:[0,-14]});m.on('click',function(){location.href=p.id+'.html'});mk[p.id]=m;});
+ var m=L.marker([p.lat,p.lng],{icon:ic,zIndexOffset:(20-p.n)*100}).bindTooltip(p.n+'. '+p.name,{direction:'top',offset:[0,-14]});m.on('click',function(){location.href=p.id+'.html'});mk[p.id]=m;});
 L.marker(H,{icon:L.divIcon({className:'',html:'<div class="pin h">H</div>',iconSize:[28,28],iconAnchor:[14,14]}),zIndexOffset:1000}).bindTooltip('Отель Fairfield by Marriott Pudong',{direction:'top',offset:[0,-14]}).addTo(map);
 var am=L.marker(A,{icon:L.divIcon({className:'',html:'<div class="pin g">A</div>',iconSize:[28,28],iconAnchor:[14,14]})}).bindTooltip('Аэропорт Pudong, Terminal 1',{direction:'top',offset:[0,-14]});
 var layer=L.layerGroup().addTo(map);

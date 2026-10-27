@@ -200,7 +200,7 @@ DAYS = [
  dict(key="air", label="✈ Аэропорт", title="Вечер: аэропорт Pudong, Terminal 1",
       why="Вылет с того же Terminal 1, куда ты прилетел (MU249, по Trip.com и AirNavRadar). Номер в отеле твой до выезда.",
       steps=[
-        ("утром", None, "⚠️ <b>Сверь время вылета в приложении China Eastern</b>: в билете 01:20, а сайты слежения за рейсами пишут 00:40-00:50.", []),
+        ("01:20", None, "Вылет <b>MU249</b> по расписанию в <b>01:20</b> (ночь на ср 28.10), Terminal 1, в Barcelona 07:40. Статус по FlightStats на 27.10 11:15 - «On time». Последние дни рейс фактически вылетал в 01:04-01:32 (Trip.com).", []),
         ("~22:00", None, "Такси от отеля, 36 км, 40-50 мин. До 23:00 дневной тариф 120-140 ¥, после 23:00 - 150-170 ¥. Плати Alipay / WeChat или наличными. Показать: <b>浦东国际机场 1号航站楼 出发</b> (Terminal 1, вылет).", [("📍 Terminal 1", gm("Shanghai Pudong International Airport Terminal 1"))]),
         ("~22:45", None, "Зал вылета на 3 этаже, регистрация China Eastern по табло.", []),
       ],
@@ -272,7 +272,7 @@ def index():
     taxi_cards = "".join(f'<div class="card"><b>{E(a)}</b><div class="zh">{b}<small>{E(c)}</small></div></div>' for a, b, c in cards)
     photos_air = "".join(f'<figure><img src="t/{f}" data-full="img/{f}" alt="{E(CAP[f])}" loading="lazy"><figcaption>{cap(f)}</figcaption></figure>' for f in ["pvg-1.jpg", "pvg-2.jpg", "pvg-3.jpg"])
     body = f'''<header><h1>Shanghai: один день</h1><div class="sub">Вторник 27.10.2026 · отель Fairfield by Marriott Pudong · ночью вылет из Terminal 1 · срез {SRC_DATE}</div></header>
-<div class="alert"><b>Коротко.</b> Рекомендую <b>вариант 1</b>: в 10:00 такси до старого китайского сада Yu Garden, обед сяолунбао, пешком по набережной Bund до моста Waibaidu, метро 1 остановка на другой берег, закат 17:10 на 118 этаже Shanghai Tower. Около 20:30 в отель, около 22:00 такси в аэропорт. ⚠️ Утром сверь время вылета в приложении China Eastern.</div>
+<div class="alert"><b>Коротко.</b> Рекомендую <b>вариант 1</b>: в 10:00 такси до старого китайского сада Yu Garden, обед сяолунбао, пешком по набережной Bund до моста Waibaidu, метро 1 остановка на другой берег, закат 17:10 на 118 этаже Shanghai Tower. Около 20:30 в отель, около 22:00 такси в аэропорт. Вылет MU249 в <b>01:20</b> по расписанию, Terminal 1 (FlightStats и Trip.com, проверено 27.10 в 11:15).</div>
 <div class="card"><h2>Погода 27.10</h2><table class="wxt">{wx}</table><p class="hint">Open-Meteo, прогноз на 27.10. Восход 6:05, закат 17:10.</p></div>
 <div class="vsw" id="sw"><button data-k="all" class="on">Все места</button>{"".join(f'<button data-k="{d["key"]}">{E(d["label"])}</button>' for d in DAYS)}</div>
 <div id="map"></div>

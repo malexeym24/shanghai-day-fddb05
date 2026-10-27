@@ -167,22 +167,24 @@ DAYS = [
       legs=[taxi("H", "YU"), walk("v1", "YU", "NX"), walk("v1", "NX", "BUNDS"), walk("v1", "BUNDS", "PEACE"), walk("v1", "PEACE", "WBD"),
             walk("v1", "WBD", "ENR"), metro(GREEN, "ENR", "LJZ"), walk("v1", "LJZ", "RIV"), walk("v1", "RIV", "TOWER"), taxi("TOWER", "H")],
       pins=["yu", "nanxiang", "bund", "waibaidu", "riverside", "tower"]),
- dict(key="v2", label="Вариант 2", title="Вариант 2: утро во Французской концессии вместо старого города",
-      why="Вместо сада - тихие улицы бывшей Французской концессии: дома 1920-х, платаны, кафе. Это про то, как живёт город сегодня. С обеда - тот же Bund и Lujiazui на закате.",
+ dict(key="v2", label="★ Твой план с 12:00", title="Твой план: Французская концессия → старый город → Bund → Lujiazui на закате",
+      why="Час в бывшей Французской концессии, потом старый город и сад (вход в Yu Garden до 16:00), пешком по Bund и на другой берег к закату 17:10. Обед - перекусить по дороге, ужин в городе или в лаунже.",
       steps=[
-        ("10:00", None, "Такси от отеля 11 км, 25-30 мин. Показать: <b>武康大楼 · 淮海中路1850号</b>.", [("📍 Wukang Mansion", gm("Wukang Mansion Shanghai"))]),
-        ("10:30", "wukang", "Дом-клин 1924 года, потом пешком на север по Wukang Road.", []),
-        ("11:30", "anfu", "19 мин пешком. Кафе и платаны, здесь же обед.", []),
-        ("13:30", None, "Такси до Bund 7 км, ~20 мин. Показать: <b>和平饭店 · 南京东路20号</b>.", []),
-        ("14:00", "waibaidu", "8 мин на север до моста, потом 15 мин до метро East Nanjing Road.", []),
-        ("14:40", None, "Метро <b>Line 2 (зелёная)</b>, 1 остановка до <b>Lujiazui</b>.", []),
-        ("15:00", "riverside", "Вид на Bund через реку.", []),
-        ("16:20", "tower", "Смотровая на закат 17:10.", []),
-        ("~20:30", None, f"Ужин, такси в отель. Показать: <b>{TAXI_HOTEL}</b>.", [("🏨 Отель", gm(HOTEL_Q))]),
+        ("12:00", None, "Такси от отеля 11 км, 25-30 мин. Показать: <b>武康大楼 · 淮海中路1850号</b>.", [("📍 Wukang Mansion", gm("Wukang Mansion Shanghai"))]),
+        ("12:30", "wukang", "Дом-клин 1924 года, потом пешком на север по Wukang Road.", []),
+        ("13:00", "anfu", "19 мин пешком. Кафе и платаны, перекусить здесь.", []),
+        ("13:40", None, "Такси до северных ворот Yu Garden, 7 км, ~20 мин. Показать: <b>豫园 北门 · 福佑路168号</b>.", [("📍 Yu Garden", gm("Yu Garden Shanghai"))]),
+        ("14:00", "yu", "Сад около часа. <b>Вход до 16:00</b>, билет 40 ¥, паспорт. Рядом чайный домик Huxinting и базар.", []),
+        ("15:15", "bund", "10 мин пешком до южного конца Bund, по набережной 15 мин до Peace Hotel. Мост Waibaidu - ещё 8 мин, по желанию.", []),
+        ("15:45", None, "Метро <b>Line 2 (зелёная)</b> от <b>East Nanjing Road</b>, поезд в сторону Pudong Airport / Guanglan Road, <b>1 остановка</b> до <b>Lujiazui</b>. Оплата: Visa / Mastercard к турникету.", [("📍 East Nanjing Road", gm("East Nanjing Road Station Shanghai"))]),
+        ("16:10", "riverside", "13 мин от метро к реке. Закат 17:10 за зданиями Bund.", []),
+        ("(или)", "tower", "Вместо набережной - смотровая 118 этажа на закат, 18 мин пешком от реки.", []),
+        ("18:00", None, "Ужин в Lujiazui, потом такси в отель 10-15 мин. Показать: <b>" + TAXI_HOTEL + "</b>.", [("🏨 Отель", gm(HOTEL_Q))]),
+        ("~22:00", None, "Такси в аэропорт, Terminal 1 - смотри «✈ Аэропорт».", []),
       ],
-      legs=[taxi("H", "WUK"), walk("v2", "WUK", "ANFU"), taxi("ANFU", "PEACE"), walk("v2", "PEACE", "WBD"), walk("v2", "WBD", "ENR"),
-            metro(GREEN, "ENR", "LJZ"), walk("v2", "LJZ", "RIV"), walk("v2", "RIV", "TOWER"), taxi("TOWER", "H")],
-      pins=["wukang", "anfu", "bund", "waibaidu", "riverside", "tower"]),
+      legs=[taxi("H", "WUK"), walk("v2", "WUK", "ANFU"), taxi("ANFU", "YU"), walk("v1", "YU", "NX"), walk("v1", "NX", "BUNDS"), walk("v1", "BUNDS", "PEACE"),
+            walk("v1", "PEACE", "WBD"), walk("v1", "WBD", "ENR"), metro(GREEN, "ENR", "LJZ"), walk("v1", "LJZ", "RIV"), walk("v1", "RIV", "TOWER"), taxi("TOWER", "H")],
+      pins=["wukang", "anfu", "yu", "bund", "waibaidu", "riverside", "tower"]),
  dict(key="v3", label="Вариант 3: после обеда", title="Вариант 3: если до обеда работаешь",
       why="Только главное, с 14:00: Bund, мост, другой берег и закат. Если хочется музея - начни с Shanghai Museum (до 17:00).",
       steps=[
@@ -202,7 +204,9 @@ DAYS = [
       steps=[
         ("01:20", None, "Вылет <b>MU249</b> по расписанию в <b>01:20</b> (ночь на ср 28.10), Terminal 1, в Barcelona 07:40. Статус по FlightStats на 27.10 11:15 - «On time». Последние дни рейс фактически вылетал в 01:04-01:32 (Trip.com).", []),
         ("~22:00", None, "Такси от отеля, 36 км, 40-50 мин. До 23:00 дневной тариф 120-140 ¥, после 23:00 - 150-170 ¥. Плати Alipay / WeChat или наличными. Показать: <b>浦东国际机场 1号航站楼 出发</b> (Terminal 1, вылет).", [("📍 Terminal 1", gm("Shanghai Pudong International Airport Terminal 1"))]),
-        ("~22:45", None, "Зал вылета на 3 этаже, регистрация China Eastern по табло.", []),
+        ("~22:45", None, "Зал вылета на 3 этаже, регистрация China Eastern по табло, потом паспортный контроль и досмотр.", []),
+        ("~23:30", None, "<b>Лаунж China Eastern</b> (бизнес-класс MU/FM пускают). Какой - зависит от выхода на посадке: <b>основное здание T1</b> - зал <b>№36</b> у досмотра 10-11, с 5:30 до последнего рейса China Eastern; <b>спутник S1</b> (выходы 1xx, туда везёт поезд) - зал <b>№137</b> на 5 этаже у выхода 137, с 6:00 до последнего рейса. 02.10 этот рейс улетал с выхода 139 (AirNavRadar) - смотри выход на посадочном.", []),
+        ("", None, "Что там: лапша, которую варят при тебе, горячее, пельмени, салаты, фрукты, пиво и немного крепкого, без шампанского; душ. Обзор зала №36 за февраль 2026 - 8 из 10. Есть ли полноценная еда около полуночи, я не нашёл - надёжнее поужинать в городе, а в лаунже добрать лапшой.", []),
       ],
       legs=[taxi("H", "T1")], pins=[]),
 ]
@@ -272,7 +276,7 @@ def index():
     taxi_cards = "".join(f'<div class="card"><b>{E(a)}</b><div class="zh">{b}<small>{E(c)}</small></div></div>' for a, b, c in cards)
     photos_air = "".join(f'<figure><img src="t/{f}" data-full="img/{f}" alt="{E(CAP[f])}" loading="lazy"><figcaption>{cap(f)}</figcaption></figure>' for f in ["pvg-1.jpg", "pvg-2.jpg", "pvg-3.jpg"])
     body = f'''<header><h1>Shanghai: один день</h1><div class="sub">Вторник 27.10.2026 · отель Fairfield by Marriott Pudong · ночью вылет из Terminal 1 · срез {SRC_DATE}</div></header>
-<div class="alert"><b>Коротко.</b> Рекомендую <b>вариант 1</b>: в 10:00 такси до старого китайского сада Yu Garden, обед сяолунбао, пешком по набережной Bund до моста Waibaidu, метро 1 остановка на другой берег, закат 17:10 на 118 этаже Shanghai Tower. Около 20:30 в отель, около 22:00 такси в аэропорт. Вылет MU249 в <b>01:20</b> по расписанию, Terminal 1 (FlightStats и Trip.com, проверено 27.10 в 11:15).</div>
+<div class="alert"><b>Коротко.</b> <b>Твой план</b> (кнопка «★ Твой план»): в 12:00 такси во Французскую концессию, час там, такси в старый город и сад Yu Garden (вход до 16:00), пешком по Bund, метро 1 остановка на другой берег, закат 17:10 на набережной Lujiazui. Ужин, около 22:00 такси в аэропорт, лаунж China Eastern - внизу в «✈ Аэропорт». Вылет MU249 в <b>01:20</b> по расписанию, Terminal 1 (FlightStats и Trip.com, проверено 27.10 в 11:15).</div>
 <div class="card"><h2>Погода 27.10</h2><table class="wxt">{wx}</table><p class="hint">Open-Meteo, прогноз на 27.10. Восход 6:05, закат 17:10.</p></div>
 <div class="vsw" id="sw"><button data-k="all" class="on">Все места</button>{"".join(f'<button data-k="{d["key"]}">{E(d["label"])}</button>' for d in DAYS)}</div>
 <div id="map"></div>
@@ -306,7 +310,7 @@ function show(k){layer.clearLayers();var pts=[H];map.removeLayer(am);
  document.querySelectorAll('#sw button').forEach(function(b){b.classList.toggle('on',b.dataset.k==k)});}
 document.querySelectorAll('#sw button').forEach(function(b){b.onclick=function(){show(b.dataset.k)}});
 document.querySelectorAll('.showday').forEach(function(b){b.onclick=function(){show(b.dataset.k);document.getElementById('sw').scrollIntoView({behavior:'smooth'})}});
-var h=location.hash.replace('#','');show(D[h]?h:'v1');
+var h=location.hash.replace('#','');show(D[h]?h:'v2');
 var me=null;document.getElementById('me').onclick=function(){if(!navigator.geolocation)return;navigator.geolocation.getCurrentPosition(function(p){var ll=[p.coords.latitude,p.coords.longitude];if(me)map.removeLayer(me);me=L.circleMarker(ll,{radius:8,color:'#fff',weight:3,fillColor:'#2563eb',fillOpacity:1}).addTo(map).bindTooltip('Ты здесь');map.setView(ll,15);document.getElementById('map').scrollIntoView({behavior:'smooth'});});};
 </script>''' % (markers, days)
     extra = '<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">' + XCSS
